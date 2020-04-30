@@ -1,0 +1,24 @@
+name: if-test
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: uptime
+  
+  job2:
+    if: github.repository == 'foo/bar'
+    needs: [job1]
+    runs-on: ubuntu-latest
+    steps:
+      - run: uptime
+  
+  job3:
+    needs: [job2]
+    runs-on: ubuntu-latest
+    steps:
+      - run: uptime
