@@ -6,12 +6,12 @@ on:
 
 jobs:
   job1:
+    if: github.repository == 'foo/bar'
     runs-on: ubuntu-latest
     steps:
       - run: uptime
   
   job2:
-    if: github.repository == 'foo/bar'
     needs: [job1]
     runs-on: ubuntu-latest
     steps:
