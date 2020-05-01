@@ -3,10 +3,12 @@ name: if-test
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   job1:
-    if: github.repository == 'foo/bar'
+    if: github.repository == 'kg9ov/test-actions'
     runs-on: ubuntu-latest
     steps:
       - run: uptime
