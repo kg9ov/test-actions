@@ -1,4 +1,4 @@
-name: Caller - Prod
+name: Caller - Stage
 
 on:
   workflow_dispatch:
