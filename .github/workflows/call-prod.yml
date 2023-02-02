@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  call_prod:
+  call-prod:
     uses: ./.github/workflows/reusable.yml
     with:
       environment: production
