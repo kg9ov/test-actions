@@ -1,0 +1,10 @@
+name: Caller - Prod
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call_prod:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      environment: production

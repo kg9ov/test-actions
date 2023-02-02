@@ -1,0 +1,26 @@
+name: Reusable
+
+on:
+  workflow_dispatch:
+
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - run: uptime
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ secrets.MY_BIG_SECRET }}
+
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.environment }}
