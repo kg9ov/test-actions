@@ -10,7 +10,7 @@ jobs:
   gh-release-view:
     runs-on: ubuntu-latest
     steps:
-      - run: gh release view -R vixenlights/vixen
+      - run: gh release view -R vixenlights/vixen --json
 
   gi-release-list:
     runs-on: ubuntu-latest
