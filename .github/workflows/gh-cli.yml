@@ -12,7 +12,17 @@ jobs:
     steps:
       - run: gh release view -R vixenlights/vixen --json apiUrl,assets,author,body,createdAt,id,isDraft,isPrerelease,name,publishedAt,tagName,tarballUrl,targetCommitish,uploadUrl,url,zipballUrl
 
-  gi-release-list:
+  gh-release-list:
     runs-on: ubuntu-latest
     steps:
       - run: gh release list -R vixenlights/vixen
+
+  gh-api-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases/latest
+  
+  gh-api-releases:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases
