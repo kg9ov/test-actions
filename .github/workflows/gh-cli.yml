@@ -3,6 +3,9 @@ name: gh-cli
 on:
   workflow_dispatch:
 
+env:
+  GH_TOKEN: ${{ github.token }}
+
 jobs:
   gh-release-view:
     runs-on: ubuntu-latest
