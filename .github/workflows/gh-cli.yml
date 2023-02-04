@@ -20,9 +20,11 @@ jobs:
   gh-api-latest:
     runs-on: ubuntu-latest
     steps:
-      - run: gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases/latest
+      - run: |
+        gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases/latest
   
   gh-api-releases:
     runs-on: ubuntu-latest
     steps:
-      - run: gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases
+      - run: |
+        gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases
