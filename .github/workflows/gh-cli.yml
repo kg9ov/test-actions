@@ -1,0 +1,15 @@
+name: gh-cli
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gh-release-view:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh release view -R vixenlights/vixen
+
+  gi-release-list:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh release list -R vixenlights/vixen
