@@ -7,24 +7,50 @@ env:
   GH_TOKEN: ${{ github.token }}
 
 jobs:
-  gh-release-view:
-    runs-on: ubuntu-latest
-    steps:
-      - run: gh release view -R vixenlights/vixen --json apiUrl,assets,author,body,createdAt,id,isDraft,isPrerelease,name,publishedAt,tagName,tarballUrl,targetCommitish,uploadUrl,url,zipballUrl
+#  gh-release-view:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: gh release view -R vixenlights/vixen --json apiUrl,assets,author,body,createdAt,id,isDraft,isPrerelease,name,publishedAt,tagName,tarballUrl,targetCommitish,uploadUrl,url,zipballUrl
 
-  gh-release-list:
-    runs-on: ubuntu-latest
-    steps:
-      - run: gh release list -R vixenlights/vixen
+#  gh-release-list:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: gh release list -R vixenlights/vixen
 
-  gh-api-latest:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases/latest
+#  gh-api-latest:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: |
+#          gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases/latest
   
-  gh-api-releases:
+#  gh-api-releases:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: |
+#          gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases
+
+  get-api-data:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          gh api -H "Accept: application/vnd.github+json" /repos/vixenlights/vixen/releases
+      - uses: actions/checkout@v2
+
+      - name: Where am I and what is here?
+        run: |
+          pwd
+          ls -ltr
+
+      - name: Fetch release data
+        run: |
+          mkdir -p data/release
+          gh api -H "Accept: application/vnd.github+json" \
+                 /repos/vixenlights/vixen/releases \
+                 > data/release/all.json
+          gh api -H "Accept: application/vnd.github+json" \
+                 /repos/vixenlights/vixen/releases/latest \
+                 > data/release/latest.json
+
+      - name: Where am I and what is here? ... again
+        run: |
+          pwd
+          ls -ltr
+          find data
