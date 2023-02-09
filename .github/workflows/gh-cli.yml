@@ -3,9 +3,6 @@ name: gh-cli
 on:
   workflow_dispatch:
 
-env:
-  GH_TOKEN: ${{ github.token }}
-
 jobs:
 #  gh-release-view:
 #    runs-on: ubuntu-latest
@@ -37,10 +34,15 @@ jobs:
       - name: Where am I and what is here?
         run: |
           pwd
-          ls -ltr
+          ls -latr
 
       - name: Fetch release data
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          mkdir -p data/release
+          mkdir -p data/release
+          echo foobar > data/release/all.json
           mkdir -p data/release
           gh api -H "Accept: application/vnd.github+json" \
                  /repos/vixenlights/vixen/releases \
@@ -52,5 +54,6 @@ jobs:
       - name: Where am I and what is here? ... again
         run: |
           pwd
-          ls -ltr
+          ls -latr
           find data
+          ls -latr data/release
