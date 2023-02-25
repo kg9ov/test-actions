@@ -19,7 +19,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
-      - run: echo ${{ secrets.MY_BIG_SECRET }}
+      - run: |
+          echo ${{ secrets.MY_BIG_SECRET }} | md5sum
 
   job3:
     runs-on: ubuntu-latest
