@@ -17,6 +17,7 @@ jobs:
 
   job2:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     steps:
       - run: echo ${{ secrets.MY_BIG_SECRET }}
 
